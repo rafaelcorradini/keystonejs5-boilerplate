@@ -6,7 +6,7 @@ A keystonejs 5 boilerplate with some useful stuff: eslint, dotenv, express, view
 
 If you want to use docker to start mongodb, run `sudo docker compose up -d` (make sure you have docker and docker-compose packages installed).
 
-To run this project first run `npm install`. Note: If you generated this project via the Keystone cli step this has been done for you \\o/.
+Then run `npm install` and after `npm run dev`
 
 Once running, the Keystone Admin UI is reachable via `localhost:3000/admin`.
 
