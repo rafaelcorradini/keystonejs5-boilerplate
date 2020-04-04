@@ -1,6 +1,6 @@
-# KeystoneJS Starter Template
+# KeystoneJS 5 Boilerplate
 
-You've created a KeystoneJS project! This project contains a simple list of users and an admin application (`localhost:3000/admin`) with basic authentication.
+A keystonejs 5 boilerplate with some useful stuff: eslint, dotenv, express, views, authentication by role, etc.
 
 ## Running the Project.
 
