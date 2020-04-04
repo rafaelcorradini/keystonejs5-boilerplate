@@ -1,0 +1,9 @@
+{
+  "extends": "@softboxlab/eslint-config-gandalf-lint-node",
+  "rules": {
+    "indent": [
+      "error",
+      2
+    ]
+  }
+}

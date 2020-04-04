@@ -1,0 +1,47 @@
+{
+  "name": "keystonejs5-boilerplate",
+  "description": "A keystonejs 5 boilerplate",
+  "private": true,
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development DISABLE_LOGGING=true node index.js",
+    "build": "cross-env NODE_ENV=production keystone build",
+    "start": "cross-env NODE_ENV=production node index.js",
+    "glint": "./node_modules/.bin/eslint ./*.js",
+    "lint": "npx eslint ."
+  },
+  "dependencies": {
+    "@keystonejs/adapter-knex": "^6.3.2",
+    "@keystonejs/app-admin-ui": "^5.9.1",
+    "@keystonejs/app-graphql": "^5.1.2",
+    "@keystonejs/app-static": "^5.1.1",
+    "@keystonejs/auth-password": "^5.1.1",
+    "@keystonejs/fields": "^6.3.2",
+    "@keystonejs/keystone": "^6.0.0",
+    "cross-env": "^7.0.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.2",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@softboxlab/eslint-config-gandalf-lint-node": "^0.2.1",
+    "eslint": "^6.8.0"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "packages/**/*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}

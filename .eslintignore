@@ -1,0 +1,7 @@
+build/*
+!build/index.js
+node_modules/*
+views/*
+public/*
+locales/*
+docker/*
