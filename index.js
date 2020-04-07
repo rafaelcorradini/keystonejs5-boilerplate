@@ -8,13 +8,17 @@ const initialiseData = require('./initial-data')
 const initModels = require('./app/models/init')
 const initAuth = require('./app/auth/init')
 const initUserMutations = require('./app/users/mutations')
+const session = require('express-session')
+const MongoStore = require('connect-mongo')
 
+const sessionStore = new MongoStore({ url: process.env.MONGO_URI })
 const keystone = new Keystone({
-  name: 'Adriano Vitello',
+  name: 'Keystonejs boilerplate',
   adapter: new MongooseAdapter({
     mongoUri: process.env.MONGO_URI
   }),
   onConnect: initialiseData,
+  sessionStore,
   cookieSecret: process.env.SECRET
 })
 
@@ -37,6 +41,11 @@ keystone
     await keystone.connect()
     const app = express()
 
+    app.use(session({
+      store: sessionStore,
+      secret: process.env.SECRET
+    }))
+
     app.set('view engine', 'ejs')
 
     app.get('/', (req, res) => {
@@ -45,3 +54,14 @@ keystone
 
     app.use(middlewares).listen(3000)
   })
+
+module.exports = {
+  keystone,
+  apps: [
+    new GraphQLApp(),
+    new AdminUIApp({
+      enableDefaultRoute: true,
+      authStrategy
+    })
+  ]
+}
