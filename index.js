@@ -9,7 +9,7 @@ const initModels = require('./app/models/init')
 const initAuth = require('./app/auth/init')
 const initUserMutations = require('./app/users/mutations')
 const session = require('express-session')
-const MongoStore = require('connect-mongo')
+const MongoStore = require('connect-mongo')(session)
 
 const sessionStore = new MongoStore({ url: process.env.MONGO_URI })
 const keystone = new Keystone({
@@ -52,7 +52,7 @@ keystone
       res.render('index')
     })
 
-    app.use(middlewares).listen(3000)
+    app.use(middlewares).listen(process.env.PORT || 8000)
   })
 
 module.exports = {

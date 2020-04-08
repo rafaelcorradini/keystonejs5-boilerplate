@@ -3,7 +3,7 @@ const userOwnsItem = ({ authentication: { item: user } }) => {
   if (!user) {
     return false
   }
-  return { id: user.id }
+  return { user: { id: user.id } }
 }
 const userHasRoleOrOwner = (roles = ['admin']) => (auth) => {
   const hasRole = userHasRole(roles)(auth)
